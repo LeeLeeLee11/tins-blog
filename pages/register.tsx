@@ -20,6 +20,7 @@ const Login: React.FC<void> = () => {
 		birthday: ''
 	});
 	const onDataChange = (e) => {
+		if(e.target.name == undefined) return;
 		setFormData({...formData, [e.target.name]: e.target.value})
 	}
 
