@@ -19,7 +19,7 @@ const Login: React.FC<void> = () => {
 		name: '',
 		birthday: ''
 	});
-	const onDataChange = (e: React.FormEvent<HTMLInputElement>) => {
+	const onDataChange = (e) => {
 		setFormData({...formData, [e.target.name]: e.target.value})
 	}
 
