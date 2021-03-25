@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 		<Link href='/'>
 			<a className="inline-block p-2 text-xl hover:text-red-500 transition-all duration-300 hover:font-bold">tindoesblog</a>
 		</Link>
-		<ul className={`flex flex-grow transition-all transform justify-end list-none appearance md:flex-row flex-col${isHidden ? ' origin-top opacity-0 invisible -translate-y-2 -z-index-1 relative md:opacity-1 md:h-auto' : ''}`}>
+		<ul className={`flex flex-grow transition-all transform justify-end list-none appearance md:flex-row flex-col${isHidden ? ' origin-top opacity-0 invisible -translate-y-2 -z-index-1 relative md:opacity-1 md:visible md:translate-y-0 md:z-0 md:h-auto' : ''}`}>
 			{
 				!isHidden && items.map((value, index) => {
 					const { subMenu } = value;
