@@ -5,8 +5,7 @@ interface IContactProps {
 }
 
 const ContactPage : React.FC<IContactProps> = (props: IContactProps) => {
-  	return <div>
-		<div className="flex items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+  	return <div className="flex items-center min-h-screen bg-gray-50 dark:bg-gray-900">
     <div className="container mx-auto">
         <div className="max-w-md p-5 mx-auto my-10 bg-white rounded-md shadow-sm">
             <div className="text-center">
@@ -49,7 +48,6 @@ const ContactPage : React.FC<IContactProps> = (props: IContactProps) => {
         </div>
     </div>
 </div>
-  	</div>;
 };
 
 export default ContactPage
