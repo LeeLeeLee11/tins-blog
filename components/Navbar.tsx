@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 				items.map((value, index) => {
 					const { subMenu } = value;
 
-					return <li key={index} className="relative group" >
+					return <li key={index} className="relative group" onClick={() => toggleIsHidden(true)}>
 						<Link href={value.link}>
 							<a className="block p-5 hover:bg-gray-200">{value.title}</a>
 						</Link>
@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 						{ subMenu && subMenu.map((item, index) => 
 							<li key={index} className="">
 								<Link href={item.link}>
-									<a className="block p-5 hover:bg-gray-200">{item.title}</a>
+									<a className="block p-5 hover:bg-gray-200" onClick={() => toggleIsHidden(true)}>{item.title}</a>
 								</Link>
 							</li>
 						)}

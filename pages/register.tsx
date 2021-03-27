@@ -1,7 +1,11 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useForm } from 'react-hook-form'
 import {AxiosResponse} from 'axios'
 import axios from 'axios'
+import {toast} from 'react-toastify'
+import {useSelector} from 'react-redux'
+import router from 'next/router'
+import { State } from '../store/usersReducer'
 
 type FormData = {
 	email: string,
@@ -11,6 +15,12 @@ type FormData = {
 	birthday: string,
 }
 
+type LoginSuccess = {
+	success: {
+		message: string,
+	}	
+}
+
 const Login: React.FC<void> = () => {
 	const { handleSubmit, register, errors } = useForm<FormData>();
 	const onSubmit = () => {
@@ -18,8 +28,11 @@ const Login: React.FC<void> = () => {
 		const { name, email, password, repassword } = formData
 		axios.post<any>('/api/auth/register', { 
 			name, email, password, repassword
-		}).then((value: AxiosResponse<any>) => {
-			console.log(value)
+		}).then((value: AxiosResponse<LoginSuccess>) => {
+			toast.success(value.data.success.message);
+
+		}).catch((err) => {
+			toast.error(err.message)
 		})
 	}
 	const [ formData, setFormData ] = useState<FormData>({ 
@@ -36,6 +49,13 @@ const Login: React.FC<void> = () => {
 
 		setFormData({...formData, [name]: value})
 	}
+
+	const { auth } = useSelector<State, State>(state => state)
+
+	useEffect(() => {
+    if(auth && auth.length > 0) router.push("/")
+  }, [auth])
+
 
 	return <form onSubmit={handleSubmit(onSubmit)} className={ `p-2 m-4 rounded shadow-md flex-col flex max-w-md mx-auto` }>
 		<h1 className="p-2 mb-2 text-lg text-gray-500">Đăng ký tài khoản</h1>

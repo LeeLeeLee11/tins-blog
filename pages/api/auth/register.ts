@@ -22,11 +22,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 		await newUser.save()
 
-		return res.json(newUser)
-
-		//return res.json({ success: { message: 'Đăng ký thành công' } })
+		res.json({ success: { message: 'Đăng ký thành công', data: {
+			name, email, id: newUser._id 
+		}}})
 	}
 	catch(err) {
-		return res.status(500).json(err)
+		return res.status(500).json({error: {message: err}})
 	}
 }

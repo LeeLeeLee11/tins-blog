@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
             <title>My App</title>
         </Head>
         <Header />
-        <div className="container mx-auto mt-10">
+        <div className="container mx-auto mt-10 bg-white p rounded-md bg-opacity-20">
             {children}
         </div>
         <Footer />

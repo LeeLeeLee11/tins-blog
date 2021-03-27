@@ -5,6 +5,8 @@ module.exports = {
   theme: {
     extend: {
     	backgroundImage: theme => ({
+    		'green-wall': "url('/images/background.jpg')"
+    		
     	})
     },
   },

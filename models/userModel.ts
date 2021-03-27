@@ -1,6 +1,6 @@
 import mongoose, { model, Schema } from 'mongoose'
 
-interface IUser {
+export interface IUser {
 	name: string,
 	email: string,
 	password: string,
@@ -16,9 +16,5 @@ const UserSchemaFields: Record<keyof IUser, any> = {
 }
 const UserSchema = new Schema(UserSchemaFields)
 
-const User = mongoose.models.User || model('User', UserSchema)
-
-export { User }
-export type { IUser }
-
+export const User = mongoose.models.User || model('User', UserSchema)
 
