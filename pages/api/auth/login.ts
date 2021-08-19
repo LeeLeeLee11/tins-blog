@@ -3,6 +3,7 @@ import {User} from '../../../models/userModel'
 import bcrypt from 'bcrypt'
 import { createAccessToken, createRefreshToken } from '../../../utils/generateToken'
 import { NextApiRequest, NextApiResponse } from 'next'
+import Cookies from 'js-cookie'
 
 connectDB()
 
@@ -28,6 +29,12 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
 
 		const access_token = createAccessToken({id: user._id})
     const refresh_token = createRefreshToken({id: user._id})
+
+    	Cookies.set('access_token', refresh_token, { 
+    	path: 'api/auth/accessToken',
+    	expires: 7
+    })
+
 		return res.json({
 			success: {
 				message: 'Login success',
@@ -36,7 +43,7 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
 				user: {
 					name: user.name,
 					email: user.email,
-					avatar: user.avatar
+					//avatar: user.avatar
 				}
 			}
 		})

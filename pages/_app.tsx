@@ -17,12 +17,12 @@ const MyApp : React.FC<AppProps> = ({ Component, pageProps }) => {
 
 				<link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css" />
       </Head>
-      <Layout>
-      	<Provider store={store}>
+      <Provider store={store}>
+      	<Layout>
 					<ToastContainer />
 					<Component {...pageProps} />
-      	</Provider>
-      </Layout>
+      	</Layout>
+      </Provider>
     </>
   )
 }

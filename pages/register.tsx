@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form'
 import {AxiosResponse} from 'axios'
 import axios from 'axios'
 import {toast} from 'react-toastify'
-import {useSelector} from 'react-redux'
 import router from 'next/router'
-import { State } from '../store/usersReducer'
+import { useAppSelector } from '../store/hooks'
+import {RootState} from '../store/store'
 
 type FormData = {
 	email: string,
@@ -50,10 +50,10 @@ const Login: React.FC<void> = () => {
 		setFormData({...formData, [name]: value})
 	}
 
-	const { auth } = useSelector<State, State>(state => state)
+	const { auth } = useAppSelector<RootState>(state => state)
 
 	useEffect(() => {
-    if(auth && auth.length > 0) router.push("/")
+    if(auth.token.length >  0) router.push("/")
   }, [auth])
 
 

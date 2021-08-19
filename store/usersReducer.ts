@@ -3,11 +3,13 @@ import { AnyAction } from 'redux'
 
 // create your reducer
 export interface State {
-	auth: string
+	token: string,
+	user: object
 }
 
 const InitialState: State = { 
-	auth: 'default'
+	token: '',
+	user: {},
 }
 
 const usersReducer = (state: State = InitialState, action: AnyAction) => {
@@ -15,8 +17,14 @@ const usersReducer = (state: State = InitialState, action: AnyAction) => {
         case HYDRATE:
             // Attention! This will overwrite client state! Real apps should use proper reconciliation.
             return {...state, ...action.payload};
-        case 'TICK':
-            return {...state, auth: action.payload};
+        case 'AUTH':
+            return {
+            	...state, 
+            	token: action.payload.token, 
+            	user: { 
+            		...action.payload.user 
+            	}
+            };
         default:
             return state;
     }

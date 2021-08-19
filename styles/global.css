@@ -10,12 +10,12 @@
 	h2 {
 		@apply text-lg font-bold;
 	}
+
 	a:link {
-		@apply text-indigo-600
 	}
 
 	a:hover {
-		@apply text-indigo-900;
 		@apply transition-all;
+		@apply underline;
 	}
 }

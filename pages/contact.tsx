@@ -1,11 +1,15 @@
 import React from 'react';
 import 'tailwindcss/tailwind.css'
+import Head from 'next/head'
 
 interface IContactProps {
 }
 
 const ContactPage : React.FC<IContactProps> = (props: IContactProps) => {
   	return <div className="flex items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+    <Head>
+        <title>Liên hệ - tinsblog</title>
+    </Head>          
     <div className="container mx-auto">
         <div className="max-w-md p-5 mx-auto my-10 bg-white rounded-md shadow-sm">
             <div className="text-center">
